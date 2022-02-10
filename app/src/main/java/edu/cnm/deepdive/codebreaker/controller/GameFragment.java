@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.codebreaker.controller;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,11 +20,18 @@ import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.FragmentGameBinding;
 import edu.cnm.deepdive.codebreaker.model.entity.Guess;
 import edu.cnm.deepdive.codebreaker.viewmodel.GameViewModel;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameFragment extends Fragment {
 
   private GameViewModel gameViewModel;
   private FragmentGameBinding binding;
+  private Map<Character, Integer> colorValueMap;
+  private Map<Character, String> colorLabelMap;
+  private Character[] poolCharacters;
+  private Spinner[] spinners;
+  private int codeLength;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +50,7 @@ public class GameFragment extends Fragment {
           .trim();
       gameViewModel.submitGuess(text);
     });
+    setupMaps();
     return binding.getRoot();
   }
 
@@ -92,4 +102,35 @@ public class GameFragment extends Fragment {
     super.onDestroyView();
     binding = null;
   }
+
+  private void setupMaps() {
+    String colors = getString(R.string.color_chars);
+    char[] colorChars = colors.toCharArray();
+    poolCharacters = colors
+        .chars()
+        .mapToObj((value) -> (char) value)
+        .toArray(Character[]::new);
+    Resources resources = getResources();
+    int[] colorValues = resources.getIntArray(R.array.color_values);
+    String[] colorLabels = resources.getStringArray(R.array.color_labels);
+    colorValueMap = buildValueMap(colorChars, colorValues);
+    colorLabelMap = buildLabelMap(colorChars, colorLabels);
+  }
+
+  private static Map<Character, Integer> buildValueMap(char[] chars, int[] values) {
+    Map<Character, Integer> valueMap = new HashMap<>();
+    for (int i = 0; i < chars.length; i++) {
+      valueMap.put(chars[i], values[i]);
+    }
+    return valueMap;
+  }
+
+  private static Map<Character, String> buildLabelMap(char[] chars, String[] labels) {
+    Map<Character, String> labelMap = new HashMap<>();
+    for (int i = 0; i < chars.length; i++) {
+      labelMap.put(chars[i], labels[i]);
+    }
+    return labelMap;
+  }
+
 }
