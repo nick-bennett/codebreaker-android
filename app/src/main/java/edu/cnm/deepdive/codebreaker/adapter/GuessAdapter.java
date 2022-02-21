@@ -1,16 +1,24 @@
 package edu.cnm.deepdive.codebreaker.adapter;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.codebreaker.adapter.GuessAdapter.Holder;
+import edu.cnm.deepdive.codebreaker.model.pojo.GameWithGuesses;
 
 public class GuessAdapter extends RecyclerView.Adapter<Holder> {
 
   // TODO Add fields for context, list of guesses, etc.
+  private final LayoutInflater inflater;
+  private final GameWithGuesses game;
 
-  // TODO Define constructor with parameters to initialize context, list of guesses, etc.
+  public GuessAdapter(Context context, GameWithGuesses game) {
+    inflater = LayoutInflater.from(context);
+    this.game = game;
+  }
 
   @NonNull
   @Override
@@ -26,8 +34,7 @@ public class GuessAdapter extends RecyclerView.Adapter<Holder> {
 
   @Override
   public int getItemCount() {
-    // TODO Return the number of guesses in the list.
-    return 0;
+    return game.getGuesses().size();
   }
 
   class Holder extends RecyclerView.ViewHolder {
