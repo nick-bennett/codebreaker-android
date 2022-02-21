@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:padding="@dimen/half_dynamic_spacing">
 
   <TextView
     android:id="@+id/guess_number"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/guess_number_width"
     android:layout_height="0dp"
-    android:layout_margin="@dimen/half_static_spacing"
-    android:includeFontPadding="false"
-    android:autoSizeTextType="uniform"
+    android:layout_marginVertical="@dimen/half_static_spacing"
+    android:layout_marginHorizontal="@dimen/half_dynamic_spacing"
     android:contentDescription="@string/guess_number"
+    style="@style/GuessNumber"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -25,6 +25,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_margin="@dimen/half_static_spacing"
+    android:gravity="start|center_vertical"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toEndOf="@id/guess_number"
     app:layout_constraintEnd_toStartOf="@id/matches_container"/>
