@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
       Intent intent = new Intent(this, SettingsActivity.class);
       startActivity(intent);
       handled = true;
+    } else if (itemId == R.id.sign_out) {
+      viewModel.signOut();
+      handled = true;
     } else {
       handled = super.onOptionsItemSelected(item);
     }

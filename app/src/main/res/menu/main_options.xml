@@ -9,4 +9,10 @@
     android:orderInCategory="1000"
     app:showAsAction="never"/>
 
+  <item
+    android:id="@+id/sign_out"
+    android:title="@string/sign_out"
+    android:orderInCategory="1100"
+    app:showAsAction="never"/>
+
 </menu>
