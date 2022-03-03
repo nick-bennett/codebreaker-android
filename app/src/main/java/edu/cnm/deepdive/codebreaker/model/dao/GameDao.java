@@ -51,6 +51,7 @@ public interface GameDao {
   @Query("SELECT * FROM game WHERE length = :length ORDER BY created DESC")
   LiveData<List<Game>> select(int length);
 
+  @SuppressWarnings("AndroidUnresolvedRoomSqlReference")
   @Query("SELECT * FROM game_summary WHERE length = :length")
   LiveData<GameSummary> getSummary(int length);
 
