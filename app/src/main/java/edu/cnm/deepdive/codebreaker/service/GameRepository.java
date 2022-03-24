@@ -16,6 +16,8 @@ import java.util.List;
 
 public class GameRepository {
 
+  // TODO Modify methods that invoke service proxy methods, to get & pass the bearer token.
+
   private final Context context;
   private final CodebreakerServiceProxy proxy;
   private final GameDao gameDao;

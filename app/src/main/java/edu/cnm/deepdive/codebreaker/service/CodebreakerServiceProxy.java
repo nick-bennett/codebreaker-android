@@ -17,6 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -24,11 +25,16 @@ public interface CodebreakerServiceProxy {
 
   String ISO_8601_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
+  // TODO Add bearer token parameter to service proxy methods.
+
   @POST("games")
   Single<GameWithGuesses> startGame(@Body Game game);
 
   @POST("games/{gameId}/guesses")
   Single<Guess> submitGuess(@Path("gameId") String gameId, @Body Guess guess);
+
+  // TODO Add more service proxy methods for retrieving & modifying user profile, retrieving
+  //  game-specific top scores, and retrieving user-specific top average scores.
 
   static CodebreakerServiceProxy getInstance() {
     return InstanceHolder.INSTANCE;

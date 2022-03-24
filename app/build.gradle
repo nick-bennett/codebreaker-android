@@ -17,6 +17,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        // TODO Modify base_url property value in codebreaker.properties, to refer to the new service.
+
         String propertyFile = "$projectDir/../../../services/codebreaker.properties"
 
         buildConfigField 'String', 'BASE_URL', quoted(getProperty(propertyFile, 'base_url'))

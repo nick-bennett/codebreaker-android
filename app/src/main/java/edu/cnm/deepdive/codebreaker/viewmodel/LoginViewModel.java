@@ -18,6 +18,8 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 public class LoginViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
 
+  // TODO Add UI controller-accessible methods for getting & modifying user profile information.
+
   private final GoogleSignInService signInService;
   private final MutableLiveData<GoogleSignInAccount> account;
   private final MutableLiveData<Throwable> throwable;
