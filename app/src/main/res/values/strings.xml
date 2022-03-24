@@ -4,7 +4,6 @@
   <string name="title_summary">Summary</string>
   <string name="title_scores">Top scores</string>
   <string name="submit_text">Submit</string>
-  <string name="guess_hint">Text of guess</string>
   <string name="new_game_title">New game</string>
 
   <string name="color_chars">ROYGBIV</string>
