@@ -85,11 +85,6 @@ public class MainActivity extends AppCompatActivity {
       Intent intent = new Intent(this, LoginActivity.class)
           .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
-    } else {
-      Toast
-          .makeText(this, getString(R.string.display_name_format, account.getDisplayName()),
-              Toast.LENGTH_LONG)
-          .show();
     }
   }
 
