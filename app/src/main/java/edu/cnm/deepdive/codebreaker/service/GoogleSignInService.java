@@ -49,7 +49,7 @@ public class GoogleSignInService {
         .create((SingleEmitter<GoogleSignInAccount> emitter) ->
             client
                 .silentSignIn()
-                .addOnSuccessListener(this::logAccount)
+//                .addOnSuccessListener(this::logAccount)
                 .addOnSuccessListener(emitter::onSuccess)
                 .addOnFailureListener(emitter::onError)
         )
@@ -72,7 +72,7 @@ public class GoogleSignInService {
             Task<GoogleSignInAccount> task =
                 GoogleSignIn.getSignedInAccountFromIntent(result.getData());
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            logAccount(account);
+//            logAccount(account);
             emitter.onSuccess(account);
           } catch (ApiException e) {
             emitter.onError(e);
@@ -92,12 +92,14 @@ public class GoogleSignInService {
         .subscribeOn(Schedulers.io());
   }
 
+/*
   private void logAccount(GoogleSignInAccount account) {
     if (account != null) {
       Log.d(getClass().getSimpleName(),
           (account.getIdToken() != null) ? getBearerToken(account) : "(none)");
     }
   }
+*/
 
   @NonNull
   private String getBearerToken(GoogleSignInAccount account) {

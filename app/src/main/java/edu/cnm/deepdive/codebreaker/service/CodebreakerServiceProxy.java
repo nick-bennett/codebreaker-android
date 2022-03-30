@@ -28,10 +28,11 @@ public interface CodebreakerServiceProxy {
   // TODO Add bearer token parameter to service proxy methods.
 
   @POST("games")
-  Single<GameWithGuesses> startGame(@Body Game game);
+  Single<GameWithGuesses> startGame(@Body Game game, @Header("Authorization") String bearerToken);
 
   @POST("games/{gameId}/guesses")
-  Single<Guess> submitGuess(@Path("gameId") String gameId, @Body Guess guess);
+  Single<Guess> submitGuess(@Path("gameId") String gameId, @Body Guess guess,
+      @Header("Authorization") String bearerToken);
 
   // TODO Add more service proxy methods for retrieving & modifying user profile, retrieving
   //  game-specific top scores, and retrieving user-specific top average scores.
