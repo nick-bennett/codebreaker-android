@@ -1,8 +1,6 @@
 package edu.cnm.deepdive.codebreaker.controller;
 
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,19 +10,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.ActivityLoginBinding;
-import edu.cnm.deepdive.codebreaker.viewmodel.LoginViewModel;
+import edu.cnm.deepdive.codebreaker.viewmodel.UserViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
   private ActivityLoginBinding binding;
-  private LoginViewModel viewModel;
+  private UserViewModel viewModel;
   private ActivityResultLauncher<Intent> launcher;
   private boolean silent;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+    viewModel = new ViewModelProvider(this).get(UserViewModel.class);
     getLifecycle().addObserver(viewModel);
     launcher = registerForActivityResult(new StartActivityForResult(), viewModel::completeSignIn);
     silent = true;

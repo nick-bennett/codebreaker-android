@@ -12,4 +12,14 @@
     app:seekBarIncrement="@integer/code_length_pref_increment"
     app:showSeekBarValue="true"/>
 
+  <EditTextPreference
+    android:key="@string/display_name_pref_key"
+    android:title="@string/display_name_pref_title"/>
+
+  <SwitchPreference
+    android:key="@string/incognito_pref_key"
+    android:title="@string/incognito_pref_title"
+    android:summaryOff="@string/incognito_pref_summary_off"
+    android:summaryOn="@string/incognito_pref_summary_on"/>
+
 </PreferenceScreen>

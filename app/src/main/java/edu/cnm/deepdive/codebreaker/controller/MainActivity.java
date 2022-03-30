@@ -15,14 +15,14 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import edu.cnm.deepdive.codebreaker.R;
 import edu.cnm.deepdive.codebreaker.databinding.ActivityMainBinding;
-import edu.cnm.deepdive.codebreaker.viewmodel.LoginViewModel;
+import edu.cnm.deepdive.codebreaker.viewmodel.UserViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
   private ActivityMainBinding binding;
   private AppBarConfiguration appBarConfiguration;
   private NavController navController;
-  private LoginViewModel viewModel;
+  private UserViewModel viewModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void setupViewModel() {
-    viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+    viewModel = new ViewModelProvider(this).get(UserViewModel.class);
     getLifecycle().addObserver(viewModel);
     viewModel
         .getAccount()
